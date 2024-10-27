@@ -19,8 +19,8 @@ public class CreateCourseController {
     }
 
     @PostMapping
-    @ResponseStatus(HttpStatus.OK)
-    public CourseResponse updateCourse(@RequestBody @Valid CreateCourseRequest request) {
+    @ResponseStatus(HttpStatus.CREATED)
+    public CourseResponse createCourse(@RequestBody @Valid CreateCourseRequest request) {
         return createCourseService.createCourse(request);
     }
 
