@@ -1,7 +1,6 @@
 package com.rocketseat.desafio.controller;
 
 import com.rocketseat.desafio.dto.request.CreateCourseRequest;
-import com.rocketseat.desafio.dto.request.UpdateCourseRequest;
 import com.rocketseat.desafio.dto.response.CourseResponse;
 import com.rocketseat.desafio.service.CreateCourseService;
 import jakarta.validation.Valid;
