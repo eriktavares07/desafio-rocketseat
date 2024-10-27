@@ -8,17 +8,20 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter
+@Setter
 @AllArgsConstructor
-public class CreateCourseRequest {
+public class UpdateCourseRequest {
 
     @NotNull(message = "O campo nome não pode ser nulo")
     @NotEmpty(message = "O campo nome não pode ser vazio")
-    @NotBlank( message = "O campo nome não pode estar em branco")
+    @NotBlank(message = "O campo nome não pode estar em branco")
     private final String name;
 
     @NotNull(message = "O campo categoria não pode ser nulo")
     @NotEmpty(message = "O campo categoria não pode ser vazio")
-    @NotBlank( message = "O campo categoria não pode estar em branco")
+    @NotBlank(message = "O campo categoria não pode estar em branco")
     private final String category;
 
+    @NotNull(message = "O campo ativo não pode ser nulo")
+    private final Boolean active;
 }

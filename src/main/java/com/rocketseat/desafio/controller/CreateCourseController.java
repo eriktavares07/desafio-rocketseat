@@ -1,6 +1,7 @@
 package com.rocketseat.desafio.controller;
 
 import com.rocketseat.desafio.dto.request.CreateCourseRequest;
+import com.rocketseat.desafio.dto.request.UpdateCourseRequest;
 import com.rocketseat.desafio.dto.response.CourseResponse;
 import com.rocketseat.desafio.service.CreateCourseService;
 import jakarta.validation.Valid;
@@ -18,8 +19,8 @@ public class CreateCourseController {
     }
 
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public CourseResponse createCourse(@RequestBody @Valid CreateCourseRequest request) {
+    @ResponseStatus(HttpStatus.OK)
+    public CourseResponse updateCourse(@RequestBody @Valid CreateCourseRequest request) {
         return createCourseService.createCourse(request);
     }
 

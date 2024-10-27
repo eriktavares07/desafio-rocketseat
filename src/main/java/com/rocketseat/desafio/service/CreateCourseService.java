@@ -1,5 +1,7 @@
 package com.rocketseat.desafio.service;
 
+import org.springframework.stereotype.Service;
+
 import com.rocketseat.desafio.dto.request.CreateCourseRequest;
 import com.rocketseat.desafio.dto.response.CourseResponse;
 import com.rocketseat.desafio.error.ChallengeErrorType;
@@ -7,7 +9,6 @@ import com.rocketseat.desafio.handler.ExceptionHandlerService;
 import com.rocketseat.desafio.mapper.CourseMapper;
 import com.rocketseat.desafio.model.CourseEntity;
 import com.rocketseat.desafio.repository.CourseRepository;
-import org.springframework.stereotype.Service;
 
 @Service
 public class CreateCourseService {
@@ -23,7 +24,8 @@ public class CreateCourseService {
 
     public CourseResponse createCourse(CreateCourseRequest request) {
         if(courseRepository.existsByName(request.getName())) {
-            throw ExceptionHandlerService.createConflictException(ChallengeErrorType.COURSE_ALREADY_EXISTS);
+            throw ExceptionHandlerService.createConflictException(
+                ChallengeErrorType.COURSE_ALREADY_EXISTS);
         }
 
         CourseEntity courseToSave = courseMapper.createRequestToEntity(request);

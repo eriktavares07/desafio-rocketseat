@@ -23,6 +23,8 @@ public class CourseMapper {
                 courseEntity.getCategory(),
                 courseEntity.getActive(),
                 courseEntity.getCreatedAt(),
-                courseEntity.getUpdatedAt());
+                courseEntity.getUpdatedAt(),
+                true
+        );
     }
 }
