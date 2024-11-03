@@ -22,14 +22,17 @@ public class CourseResponse {
     private Boolean active;
 
     @JsonProperty("creation_date")
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime createdAt;
 
     @JsonProperty("last_updated_date")
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime updatedAt;
 
     @JsonProperty("updated")
     private Boolean updated;
+
+    @JsonProperty("partial_updated")
+    private Boolean partialUpdated;
 
 }

@@ -1,6 +1,6 @@
 package com.rocketseat.desafio.mapper;
 
-import com.rocketseat.desafio.dto.request.CreateCourseRequest;
+import com.rocketseat.desafio.dto.request.CourseRequest;
 import com.rocketseat.desafio.dto.response.CourseResponse;
 import com.rocketseat.desafio.model.CourseEntity;
 import org.springframework.stereotype.Component;
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class CourseMapper {
 
-    public CourseEntity createRequestToEntity(CreateCourseRequest request){
+    public CourseEntity createRequestToEntity(CourseRequest request) {
         return CourseEntity.builder()
                 .name(request.getName())
                 .category(request.getCategory())
@@ -16,7 +16,7 @@ public class CourseMapper {
                 .build();
     }
 
-    public CourseResponse entityToResponse(CourseEntity courseEntity){
+    public CourseResponse entityToResponse(CourseEntity courseEntity) {
         return new CourseResponse(
                 courseEntity.getId(),
                 courseEntity.getName(),
@@ -24,6 +24,7 @@ public class CourseMapper {
                 courseEntity.getActive(),
                 courseEntity.getCreatedAt(),
                 courseEntity.getUpdatedAt(),
+                true,
                 true
         );
     }

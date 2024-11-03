@@ -1,6 +1,6 @@
 package com.rocketseat.desafio.mapper;
 
-import com.rocketseat.desafio.dto.request.CreateCourseRequest;
+import com.rocketseat.desafio.dto.request.CourseRequest;
 import com.rocketseat.desafio.dto.response.CourseResponse;
 import com.rocketseat.desafio.model.CourseEntity;
 import org.junit.jupiter.api.BeforeEach;
@@ -22,7 +22,7 @@ public class CourseMapperTest {
 
     @Test
     public void validateMapRequestToEntity(){
-        CreateCourseRequest request = new CreateCourseRequest("Teste", "Teste descricao");
+        CourseRequest request = new CourseRequest("Teste", "Teste descricao");
 
         CourseEntity entity = courseMapper.createRequestToEntity(request);
 

@@ -24,18 +24,18 @@ public class CourseEntity {
     @Column(nullable = false, name = "course_name")
     private String name;
 
-    @Column(nullable = false,  name = "course_category")
+    @Column(nullable = false, name = "course_category")
     private String category;
 
-    @Column(nullable = false,  name = "course_active")
+    @Column(nullable = false, name = "course_active")
     private Boolean active;
 
     @CreationTimestamp
-    @Column(nullable = false,  name = "course_created_at")
+    @Column(nullable = false, name = "course_created_at")
     private LocalDateTime createdAt;
 
     @UpdateTimestamp
-    @Column(nullable = false,  name = "course_updated_at")
+    @Column(nullable = false, name = "course_updated_at")
     private LocalDateTime updatedAt;
 
 }
