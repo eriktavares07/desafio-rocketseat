@@ -9,6 +9,9 @@ import com.rocketseat.desafio.model.CourseEntity;
 import com.rocketseat.desafio.repository.CourseRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class CreateCourseService {
 
@@ -31,4 +34,30 @@ public class CreateCourseService {
         return courseMapper.entityToResponse(courseRepository.save(courseToSave));
     }
 
+    public List<CourseResponse> getAllCourses(String name, String category) {
+        List<CourseEntity> courses;
+        if (name != null && !name.isEmpty()) {
+            courses = courseRepository.findByNameContainingIgnoreCase(name);
+        } else if (category != null && !category.isEmpty()) {
+            courses = courseRepository.findByCategoryContainingIgnoreCase(category);
+        } else {
+            courses = courseRepository.findAll();
+        }
+        return courses.stream()
+                .map(courseMapper::entityToResponse)
+                .collect(Collectors.toList());
+    }
+
+    public CourseResponse getCourseById(Long id) {
+        CourseEntity course = courseRepository.findById(id)
+                .orElseThrow(() -> ExceptionHandlerService.createNotFoundException(ChallengeErrorType.COURSE_NOT_FOUND));
+        return courseMapper.entityToResponse(course);
+    }
+
+    public void deleteCourse(Long id) {
+        if (!courseRepository.existsById(id)) {
+            throw ExceptionHandlerService.createNotFoundException(ChallengeErrorType.COURSE_NOT_FOUND);
+        }
+        courseRepository.deleteById(id);
+    }
 }

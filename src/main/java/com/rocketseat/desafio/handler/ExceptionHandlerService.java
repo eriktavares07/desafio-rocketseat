@@ -11,4 +11,8 @@ public class ExceptionHandlerService {
         return new ChallengeConflictException(error.getMessage(), error.getCode());
     }
 
+    public static ChallengeConflictException createNotFoundException(ChallengeErrorType error) {
+        return new ChallengeConflictException(error.getMessage(), error.getCode());
+    }
+
 }
