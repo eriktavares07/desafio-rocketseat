@@ -3,7 +3,6 @@ package com.rocketseat.desafio.handler;
 import com.rocketseat.desafio.dto.response.error.CauseErrorResponse;
 import com.rocketseat.desafio.dto.response.error.ErrorResponse;
 import com.rocketseat.desafio.exception.ChallengeApiException;
-import com.rocketseat.desafio.exception.ResourceNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -24,16 +23,8 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(error, HttpStatus.valueOf(error.status()));
     }
 
-    @ExceptionHandler(ResourceNotFoundException.class)
-    public ResponseEntity<ErrorResponse> handleResourceNotFound(ResourceNotFoundException ex) {
-        CauseErrorResponse causeErrorResponse = new CauseErrorResponse(404, ex.getMessage());
-        ErrorResponse error = new ErrorResponse(404, "not_found", causeErrorResponse);
-        return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
-    }
-
     @Override
-    protected ResponseEntity<Object> handleMethodArgumentNotValid(
-            MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
+    protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
         StringBuilder bodyOfResponse = new StringBuilder();
 
         ex.getBindingResult().getFieldErrors().forEach(item -> {
@@ -41,12 +32,12 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         });
 
         CauseErrorResponse causeErrorResponse = new CauseErrorResponse(0, bodyOfResponse.toString());
-        ErrorResponse errorResponse = new ErrorResponse(400, "bad_request", causeErrorResponse);
+        ErrorResponse  errorResponse = new ErrorResponse(400, "bad_request", causeErrorResponse);
         return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
     }
 
-    private ErrorResponse generateErrorResponse(Exception requestException) {
-        if (requestException instanceof ChallengeApiException ex) {
+    private ErrorResponse generateErrorResponse(Exception requestException){
+        if(requestException instanceof ChallengeApiException ex){
             CauseErrorResponse causeErrorResponse = new CauseErrorResponse(ex.getErrorCode(), ex.getMessage());
             return new ErrorResponse(ex.getStatus(), ex.getError(), causeErrorResponse);
         }

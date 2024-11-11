@@ -14,11 +14,10 @@ public class SecurityConfig {
 
     private static final String[] ALLOWED_ROUTES = {
             "/swagger-ui/**",
-            "v3/api-docs/**",
+            "/v3/api-docs/**",
             "/swagger-resources/**",
             "swagger-resources",
-            "/cursos/**",
-            "/h2-console/**"
+            "/cursos/**"
     };
 
     @Bean

@@ -6,14 +6,17 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class UpdateCourseRequest extends CourseRequest {
+public class UpdateCourseRequest {
 
     @NotNull(message = "O campo ativo não pode ser nulo")
     private Boolean active;
 
+    private String name;
+    private String category;
+
     public UpdateCourseRequest(String name, String category, Boolean active) {
-        super(name, category);
+        this.name = name;
+        this.category = category;
         this.active = active;
     }
-
 }

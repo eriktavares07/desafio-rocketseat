@@ -1,7 +1,11 @@
 package com.rocketseat.desafio.model;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -12,7 +16,6 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @AllArgsConstructor
-@NoArgsConstructor
 @Builder
 public class CourseEntity {
 
@@ -38,4 +41,6 @@ public class CourseEntity {
     @Column(nullable = false, name = "course_updated_at")
     private LocalDateTime updatedAt;
 
+    public CourseEntity() {
+    }
 }

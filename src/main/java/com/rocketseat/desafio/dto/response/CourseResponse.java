@@ -29,10 +29,4 @@ public class CourseResponse {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime updatedAt;
 
-    @JsonProperty("updated")
-    private Boolean updated;
-
-    @JsonProperty("partial_updated")
-    private Boolean partialUpdated;
-
 }
