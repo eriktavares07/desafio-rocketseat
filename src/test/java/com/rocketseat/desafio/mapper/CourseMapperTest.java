@@ -28,11 +28,14 @@ public class CourseMapperTest {
 
         assert Objects.equals(request.getName(), entity.getName());
         assert Objects.equals(request.getCategory(), entity.getCategory());
+        assert Objects.equals(entity.getActive(), true);
     }
 
     @Test
     public void validateMapEntityToResponse(){
-        CourseEntity entity = new CourseEntity(1L, "Teste", "Teste Categoria", true, LocalDateTime.now(),  LocalDateTime.now().plusDays(2));
+        LocalDateTime createdAt = LocalDateTime.now();
+        LocalDateTime updatedAt = LocalDateTime.now().plusDays(2);
+        CourseEntity entity = new CourseEntity(1L, "Teste", "Teste Categoria", true, createdAt, updatedAt);
 
         CourseResponse response = courseMapper.entityToResponse(entity);
 
@@ -40,7 +43,7 @@ public class CourseMapperTest {
         assert Objects.equals(response.getName(), entity.getName());
         assert Objects.equals(response.getCategory(), entity.getCategory());
         assert Objects.equals(response.getActive(), entity.getActive());
-        assert Objects.equals(response.getUpdatedAt(), entity.getUpdatedAt());
         assert Objects.equals(response.getCreatedAt(), entity.getCreatedAt());
+        assert Objects.equals(response.getUpdatedAt(), entity.getUpdatedAt());
     }
 }

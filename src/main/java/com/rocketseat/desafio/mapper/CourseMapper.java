@@ -1,6 +1,7 @@
 package com.rocketseat.desafio.mapper;
 
 import com.rocketseat.desafio.dto.request.CreateCourseRequest;
+import com.rocketseat.desafio.dto.request.UpdateCourseRequest;
 import com.rocketseat.desafio.dto.response.CourseResponse;
 import com.rocketseat.desafio.model.CourseEntity;
 import org.springframework.stereotype.Component;

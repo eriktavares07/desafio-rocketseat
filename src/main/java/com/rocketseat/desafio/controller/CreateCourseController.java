@@ -1,6 +1,7 @@
 package com.rocketseat.desafio.controller;
 
 import com.rocketseat.desafio.dto.request.CreateCourseRequest;
+import com.rocketseat.desafio.dto.request.UpdateCourseRequest;
 import com.rocketseat.desafio.dto.response.CourseResponse;
 import com.rocketseat.desafio.service.CreateCourseService;
 import jakarta.validation.Valid;
@@ -40,10 +41,25 @@ public class CreateCourseController {
         return ResponseEntity.ok(courseResponse);
     }
 
+    @PatchMapping("{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public CourseResponse partialUpdateCourse(@PathVariable Long id, @RequestBody UpdateCourseRequest updateRequest) {
+        CourseResponse updatedCourse = createCourseService.partialUpdateCourse(id, updateRequest);
+        System.out.println("Updated Course: " + updatedCourse);
+        return updatedCourse;
+    }
+
+    @PutMapping("{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public CourseResponse updateCourse(@PathVariable Long id, @RequestBody UpdateCourseRequest updateRequest) {
+        CourseResponse updatedCourse = createCourseService.updateCourse(id, updateRequest);
+        System.out.println("Updated Course: " + updatedCourse);
+        return updatedCourse;
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCurso(@PathVariable Long id) {
         createCourseService.deleteCourse(id);
         return ResponseEntity.noContent().build();
     }
 }
-
